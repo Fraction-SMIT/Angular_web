@@ -1,16 +1,177 @@
-<div class="card" *ngIf="!isEditUser">
-    <div class="card-header" style="background-color: seashell;">
-        <b>Create User</b>
-    </div>
-    <div class="card-body">
-
-
-
-
-
-
-        
-    </div>
+<div class="container-fluid p-5">
+    <form class="card" [formGroup]="userRegistration" (ngSubmit)="onSubmit()">
+        <div class="card-header text-center bg-success-subtle fw-bold fs-3 p-3">
+            User Registration
+        </div>
+        <div class="card-body p-3 bg-light">
+            <div class="row g-3 p-3">
+                <div class="col-md-6">
+                    <label for="input4FirstName" class="form-label">First Name
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="input4FirstName" formControlName="firstname">
+                    <!-- <div *ngIf="userRegistration.controls.firstname.touched && userRegistration.controls.firstname.invalid"
+                        class="text-danger">
+                        FirstName is required
+                    </div> -->
+                    <div class="text-danger"
+                        *ngIf="userRegistration.controls.firstname.errors?.['required'] && submitted">
+                        FirstName is required
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="userRegistration.controls.firstname.errors?.['minlength'] && submitted">
+                        Type minimum of 5 character
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="userRegistration.controls.firstname.errors?.['pattern'] && submitted">
+                        Alphabets are allowed
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="input4LastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="input4LastName" formControlName="lastname">
+                    <div class="invalid-feedback">
+                        Required
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="input4Email" class="form-label">Email</label>
+                    <input type="email" class="form-control " id="input4Email" formControlName="email">
+                    <div class="invalid-feedback">
+                        Required
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="input4Password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="input4Password" formControlName="password">
+                    <div class="text-danger"
+                        *ngIf="userRegistration.controls.password.errors?.['required'] && submitted">
+                        Password is Required
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="input4confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="input4confirmPassword"
+                        formControlName="confirmPassword">
+                    <div class="text-danger"
+                        *ngIf="userRegistration.controls.confirmPassword.errors?.['required'] && submitted">
+                        confirm Password is Required
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="input4Address" class="form-label">Address</label>
+                    <textarea type="text" class="form-control" id="input4Address" formControlName="address"
+                        placeholder="1234 Main St"></textarea>
+                    <div class="invalid-feedback">
+                        Required
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="input4MobileNo" class="form-label">Mobile Number</label>
+                    <input type="number" class="form-control" id="input4MobileNo" formControlName="mobileno"
+                        placeholder="123456789">
+                    <div class="invalid-feedback">
+                        Required
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="inputCity" class="form-label">City</label>
+                    <input type="text" class="form-control" id="inputCity" formControlName="city">
+                    <div class="invalid-feedback">
+                        Required
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="inputState" class="form-label">State</label>
+                    <select id="inputState" class="form-select" formControlName="state">
+                        <option value="" selected>Choose...</option>
+                        <option value="1">Maharashtra</option>
+                        <option value="5">TamilNadu</option>
+                        <option value="6">Andhra Pradesh</option>
+                        <option value="2">Kerala</option>
+                        <option value="3">Karnataka</option>
+                        <option value="4">Telangana</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Required
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="input4Country" class="form-label">Country</label>
+                    <select id="input4Country" class="form-select" formControlName="country">
+                        <option value="" selected>Choose...</option>
+                        <option value="1">India</option>
+                        <option value="2">USA</option>
+                        <option value="3">England</option>
+                        <option value="4">Singapore</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Required
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="inputPincode" class="form-label">Pincode</label>
+                    <input type="number" class="form-control" id="inputPincode" formControlName="pincode">
+                    <div class="invalid-feedback">
+                        Required
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="inputDate" class="form-label">DOB</label>
+                    <input type="date" class="form-control" id="inputDate" formControlName="dob">
+                    <div class="invalid-feedback">
+                        Required
+                    </div>
+                </div>
+                <div class="col-md-3 p-3">
+                    <span class="form-check">
+                        <input class="form-check-input" value="male" type="radio" id="flexRadioMale"
+                            formControlName="gender">
+                        <label class="form-check-label" for="flexRadioMale">
+                            Male
+                        </label>
+                    </span>
+                    <span class="form-check">
+                        <input class="form-check-input" value="female" type="radio" id="flexRadioFemale"
+                            formControlName="gender">
+                        <label class="form-check-label" for="flexRadioFemale">
+                            Female
+                        </label>
+                    </span>
+                </div>
+                <div class="col-md-3" formArrayName="skills">
+                    <ul class="list-group">
+                        <li class="list-group-item bg-dark text-white fw-bold fs-5">Skills</li>
+                        <li class="list-group-item bg-success-subtle"
+                            *ngFor="let skill of skills.controls; let i=index">
+                            <div [formGroupName]="i">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Skill Name</span>
+                                    <input type="text" class="form-control" formControlName="skill">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Experience</span>
+                                    <input type="text" class="form-control" formControlName="exp">
+                                </div>
+                                <button type="button" class="btn btn-danger fw-bold" (click)="removeSkill(i)">Remove
+                                    Skill</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-danger fw-bold" (click)="addSkills()">Add
+                        Skills</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer d-grid gap-2 d-md-flex justify-content-md-end bg-success-subtle p-3">
+            <button type="button" class="btn btn-success fw-bold" (click)="setUserRegistration()">SetValue</button>
+            <button type="button" class="btn btn-success fw-bold" (click)="patchUserRegistration()">PatchValue</button>
+            <button type="button" class="btn btn-success fw-bold" (click)="onReset()">Reset</button>
+            <button type="submit" class="btn btn-success fw-bold">Save</button>
+        </div>
+    </form>
 </div>
 
 

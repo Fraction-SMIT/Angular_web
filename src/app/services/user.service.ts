@@ -13,11 +13,10 @@ export class UserService {
 
 
   getUserList(): Observable<any> {
- 
     return this.http.get(`user/getUserList`).pipe(
-      retry(3),
+      retry(2),
       catchError(this.handleError)
-    );
+    )
   }
 
 
@@ -27,20 +26,22 @@ export class UserService {
   }
 
 
-  handleError(error: HttpErrorResponse) {
-
-    let errorMessage = "";
-    if (error.status == 0) {
-      console.log("Error Occurred :" + error.error);
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage="";
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
     } else {
-      errorMessage = `API returned code - ${error.status}  - ${error.statusText}. Error Message : ${error.message}`
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, body was: `, error.error);
+        errorMessage =  `Backend returned code ${error.status} - ${error.statusText} , body was: ${error.message} `, error.error;
     }
-
-    if (errorMessage == "") {
-      errorMessage = 'Something bad happened; Please try again.';
-    }
+    // Return an observable with a user-facing error message.
+    if(errorMessage=="")
+    errorMessage='Something bad happened; please try again later.';
     return throwError(() => new Error(errorMessage));
   }
-
 
 }

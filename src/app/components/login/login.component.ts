@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  @ViewChild('loginForm') form!: NgForm
 
-  @ViewChild('loginForm') form!: NgForm;
+  constructor(private router: Router) { }
 
   model: any = {};
 
@@ -22,8 +22,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form);
-    console.log(this.model);
-    this.router.navigateByUrl("views/dashboard");
+    console.log(this.form.value);
+    console.log(this.model)
+    if (this.model.email !== "" && this.model.password !== "") {
+      this.router.navigateByUrl("views/dashboard");
+    }
 
   }
 

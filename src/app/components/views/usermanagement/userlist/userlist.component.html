@@ -4,12 +4,10 @@
   </div>
   <div class="card-body">
 
-
-    <div *ngIf="error!=''" class="alert alert-danger" role="alert">
+    <div *ngIf="error!=''" class="alert alert-danger alert-dismissible fade show" role="alert">
       <strong>{{error}}</strong>
-      <button type="button" class="btn-close" (click)="onCloseAlert()"></button>
+      <button type="button" class="btn-close" (click)="onClose($event)"  data-dismiss="alert" aria-label="Close"></button>
     </div>
-
 
     <table class="table">
       <thead>
@@ -24,14 +22,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of userList">
+        <tr *ngFor="let user of userList" >
           <td>{{user.UserId}}</td>
           <td>{{user.FirstName}} {{user.LastName}}</td>
           <td>{{user.MobileNumber}}</td>
           <td>{{user.Address}}</td>
           <td>{{user.State}}</td>
           <td>{{user.Pincode}}</td>
-          <td><button class="btn btn-primary" style="cursor: pointer;" (click)="onEditUser(user);">Edit</button></td>
+          <td><button class="btn btn-primary" style="cursor: pointer;" (click)="onEditUser(user);" >Edit</button></td>
 
         </tr>
       </tbody>

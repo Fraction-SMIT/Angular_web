@@ -17,13 +17,11 @@ export class UserlistComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     this.userService.getUserList().subscribe(res => {
       this.userList = res;
     }, (error) => {
       this.error = error;
-    }
-    );
+    });
 
 
   }
@@ -32,8 +30,8 @@ export class UserlistComponent implements OnInit {
     this.router.navigateByUrl("views/user/edituser/" + user.UserId);
   }
 
-  onCloseAlert()
-  {
+
+  onClose(event: any) {
     this.error = "";
   }
 

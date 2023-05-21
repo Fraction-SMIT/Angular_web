@@ -1,7 +1,7 @@
-input.ng-invalid.ng-touched{
+input.ng-invalid.ng-touched {
     border: red 1px solid;
 }
 
-.error{
+.mandatory {
     color: red;
 }

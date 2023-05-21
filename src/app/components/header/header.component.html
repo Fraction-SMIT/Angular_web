@@ -1,27 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-sm-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Angular Project</a>
-       
-        
+        <a class="navbar-brand fw-bold fs-3">JAZZ TIMES</a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
+            <ul class="nav nav-pills nav-fill">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="./dashboard">Home
+                    <a class="nav-link text-white fw-bold fs-6" routerLinkActive="active" routerLink="./dashboard">HOME
                     </a>
                 </li>
-                <li class="nav-item" >
-                    <a class="nav-link" routerLink="./user/userlist">User List</a>
-                </li>
-                <li class="nav-item" >
-                    <a class="nav-link" routerLink="./user/createuser" >Create User</a>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-bold fs-6" routerLinkActive="active"
+                        routerLink="./collections/mens-watches">MEN </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white"  routerLink="../login" >logout</a>
+                    <a class="nav-link text-white fw-bold fs-6" routerLinkActive="active"
+                        routerLink="./collections/womens-watches">WOMEN </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-bold fs-6" routerLinkActive="active"
+                        routerLink="./collections/smart-watches-all">SMART WATCHES </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-bold fs-6" routerLinkActive="active"
+                        routerLink="../login">LogOut</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
-
-
